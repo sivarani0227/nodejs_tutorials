@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>Hello</title>
+</head>
+<h3>Websockets</h3>
+<script type="text/javascript">
+    window.onload = function(){
+        var ws = new WebSocket('ws://localhost:8000/','echo.protocol')
+        ws.onopen = function(){
+            console.log('opened')
+        };
+
+        ws.onmessage=function(data){
+            console.log('data')
+            ws.send(JSON.stringify({status:'ok'}))
+        };
+    };
+
+</script>
+</html>
