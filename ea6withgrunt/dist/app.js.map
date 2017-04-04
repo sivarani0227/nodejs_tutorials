@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/app.js"],"names":["rectange","r","console","log","area"],"mappings":"AAAA,SAAQA,QAAR,QAAuB,YAAvB;;AAEA,IAAIC,IAAI,IAAID,QAAJ,CAAa,EAAb,EAAgB,EAAhB,CAAR;AACAE,QAAQC,GAAR,CAAYF,EAAEG,IAAF,KAAW,IAAvB","file":"app.js","sourcesContent":["import {rectange} from \"./rectange\"\r\n\r\nvar r = new rectange(50,20);\r\nconsole.log(r.area === 1000)"]}

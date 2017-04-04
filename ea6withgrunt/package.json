@@ -1,0 +1,16 @@
+{
+  "name": "ea6withgrunt",
+  "version": "1.0.0",
+  "description": "grunt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Siva",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0"
+  }
+}
