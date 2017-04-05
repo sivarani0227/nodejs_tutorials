@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<title>Static HTML</title>
+</head>
+<body style="background-color:yellow">
+    <h1 style="background-color:lightgreen">Http Server on Node by Murthy</h1>
+<button id='getJSON'>Get JSON file</button>
+<script type='text/javascript'>
+    // bind to click
+
+var btn = document.getElementById('getJSON');
+btn.addEventListener('click', getJSONContent, false);
+    // Send a request to the server for the JSON file
+
+function getJSONContent() {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = jsonRetrieved;
+    xhr.open('GET', '/testfile.json', true);
+    xhr.send();
+}
+// Log to the console
+function jsonRetrieved() {
+    alert(this.responseText);
+}
+</script>
+</body>
+</html>
