@@ -1,0 +1,27 @@
+<% include layout %>
+<form  method='post' >
+  <div class ="container">
+    <% if( typeof(error) !== 'undefined' && error ) { %>
+       <div style = "background-color:red"> <%=error%>
+     <%}%>
+
+
+     <table border = "1" >
+      <input type="hidden" , name "_csrf" , value =""
+     <tr>
+      	<td>
+      		<input type="text" name ="email" requried>
+      	</td>
+</tr>
+<tr>
+		<td>
+      		<input type="text" name ="email" requried>
+      	</td>
+</tr>
+<tr>
+<td> <input type="checkbox"> remember me </td>
+<td> <input type="submit"> submit </td>
+</tr>
+</table>
+</div>
+</from>

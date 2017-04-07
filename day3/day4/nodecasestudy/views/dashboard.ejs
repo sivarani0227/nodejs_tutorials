@@ -1,0 +1,16 @@
+<% include layout %>
+<h1 class="bg-primary" style="background-color:orange"> Welcome To Dashboard</h1>
+<hr/>
+<h2 class="bg-primary" style="background-color:orange"> Put Your Stuff Here</h2>
+<hr/>
+
+<div class='panel bg-danger'>
+    <% if (typeof(user) !== 'undefined'){%>
+        <h1 style="color:yellow"> Welcome! <%=user.firstName%></h1>
+    <%}%>
+        <% if (typeof(user) !== 'undefined'){%>
+        <h1 style="color:yellow"> Welcome! <%=user.firstName%></h1>
+    <%}%>
+    
+</div>
+<hr/>

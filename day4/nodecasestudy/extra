@@ -1,0 +1,92 @@
+var express =require('express')
+
+var bodyparser = require('body-parser')
+var mongoose = require('mongoose')
+
+//configure model
+
+var schema= mongoose.Schema
+var ObjectId = schema.ObjectId
+
+var User = mongoose.model('User',schema({
+  id : ObjectId,
+  firstName : {type:String},
+  lastName : {type:String},
+  email : {type:String,required:true,unique:true},
+  password : {type:String},
+}));
+
+var app=express()
+app.set('view engine','ejs')
+
+app.locals.pretty= true
+
+mongoose.connect('mongodb://localhost:27017/testdb')
+
+app.use(bodyparser.urlencoded({extended:true}))
+
+app.get('/',function (req,res){
+  //  res.send(`<h1> Welcome to dashboard casestudy</h1>`)
+    res.render('index.ejs')
+});
+
+app.get('/register',function (req,res){
+    res.render('register.ejs')
+});
+
+app.post('/register', function(req,res){
+	var user = new User ({
+		firstName : req.body.firstName,
+		lastName : req.body.lastName,
+		email : req.body.email,
+		password  : req.body.password
+	});
+
+	user.save(function(err) {
+		if(err){
+			var error = 'somehing bad happened ... try again';
+			if(err.code===11000){
+				error = 'Sorry... email is already existed';
+				}
+			res.render('register.ejs');
+			}
+		else {
+				res.redirect('dashboard.ejs');			
+		}
+	});
+});
+
+
+app.get('/login',function (req,res){
+    res.render('login.ejs')
+});
+
+app.post('/login', function(req,res){
+	User.findOne ({ email : req.body.email}, function(err, user) {
+		if(!user) {
+			res.render('login.ejs' ,{error: 'invalide mail or password'})
+
+		}else{
+			if(req.body.password === user.password){
+				res.redirect('/dashboard')
+			}else{
+				res.render('login.ejs');
+				{error : 'invalide mail or password' }
+			}
+		}
+	}) 
+	});
+
+	
+
+app.get('/dashboard',function (req,res){
+    res.render('dashboard.ejs')
+});
+
+app.get('/logout',function (req,res){
+    res.render('/')
+});
+
+
+app.listen(3000)
+console.log('app is running')
